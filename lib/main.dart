@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:phone_call_demo/next_page.dart';
-import 'package:phone_call_demo/platform_channel.dart';
+import 'next_page.dart';
+import 'platform_channel.dart';
 
 void main() {
   runApp(const MyApp());
