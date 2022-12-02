@@ -1,4 +1,5 @@
 import 'package:calls_identifier/models/call_model.dart';
+import 'package:calls_identifier/utils/formatPhoneNumber.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'services/platform_channel.dart';
@@ -34,7 +35,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  String phoneNumber = 'No call';
+  String phoneNumber = '';
   int? state;
   late Animation<Color?> animation;
   late AnimationController controller;
@@ -50,8 +51,9 @@ class _HomePageState extends State<HomePage>
           var arr = event.split("-");
           phoneNumber = arr[0];
           if (phoneNumber.isNotEmpty && phoneNumber != 'null') {
-            callHistory
-                .add(CallModel(date: DateTime.now(), phoneNumber: phoneNumber));
+            callHistory.add(CallModel(
+                date: DateTime.now(),
+                phoneNumber: formatPhoneNumber(phoneNumber)));
             state = int.tryParse(arr[1]);
           }
 
