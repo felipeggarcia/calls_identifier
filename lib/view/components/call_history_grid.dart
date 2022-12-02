@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../models/call_model.dart';
+import '../../models/call_model.dart';
 import 'call_item.dart';
 
 class CallHistoryGrid extends StatelessWidget {
-  CallHistoryGrid({required this.callHistory});
+  CallHistoryGrid({Key? key, required this.callHistory}) : super(key: key);
   List<CallModel> callHistory;
 
   List<CallItem> callHistoryWidget = [];

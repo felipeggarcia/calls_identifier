@@ -1,7 +1,8 @@
+import 'package:calls_identifier/models/call_model.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'next_page.dart';
-import 'platform_channel.dart';
+import 'services/platform_channel.dart';
+import 'view/page/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +20,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
-      routes: <String, WidgetBuilder>{
-        '/nextPage': (BuildContext context) => new NextPage(),
-      },
     );
   }
 }
@@ -40,6 +38,7 @@ class _HomePageState extends State<HomePage>
   int? state;
   late Animation<Color?> animation;
   late AnimationController controller;
+  List<CallModel> callHistory = [];
 
   @override
   void initState() {
@@ -50,8 +49,14 @@ class _HomePageState extends State<HomePage>
         PlatformChannel().callStream().listen((event) {
           var arr = event.split("-");
           phoneNumber = arr[0];
-          state = int.tryParse(arr[1]);
+          if (phoneNumber.isNotEmpty && phoneNumber != 'null') {
+            callHistory
+                .add(CallModel(date: DateTime.now(), phoneNumber: phoneNumber));
+            state = int.tryParse(arr[1]);
+          }
+
           print("telefon: ${event}");
+          print(callHistory);
           setState(() {});
         });
       }
@@ -95,44 +100,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Get Phone Number'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Incoming call number:',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(phoneNumber, style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 16),
-            Visibility(
-              visible: (state ?? 0) == 0 ? false : true,
-              child: AnimatedBuilder(
-                animation: animation,
-                builder: (BuildContext context, Widget? child) {
-                  return Container(
-                    color: animation.value,
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Text(state == 1
-                          ? "Çalıyor"
-                          : state == 2
-                              ? "Açıldı"
-                              : ""),
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    return MainPage(callHistory: callHistory);
   }
 }

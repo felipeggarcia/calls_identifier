@@ -1,4 +1,3 @@
-import 'package:calls_identifier/model/call.dart';
 import 'package:calls_identifier/models/call_model.dart';
 import 'package:calls_identifier/view/components/call_history_grid.dart';
 import 'package:flutter/material.dart';

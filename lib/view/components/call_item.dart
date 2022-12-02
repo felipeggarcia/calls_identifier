@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/call_model.dart';
+import '../../models/call_model.dart';
 
 class CallItem extends StatelessWidget {
   CallModel callModel;
