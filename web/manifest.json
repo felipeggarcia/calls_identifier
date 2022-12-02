@@ -1,0 +1,14 @@
+{
+    "name": "calls_identifier",
+    "short_name": "calls_identifier",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Get phone number of incoming call",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        
+    ]
+}
