@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/phone_call_demo.iml" filepath="$PROJECT_DIR$/phone_call_demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/phone_call_demo_android.iml" filepath="$PROJECT_DIR$/android/phone_call_demo_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calls_identifier.iml" filepath="$PROJECT_DIR$/calls_identifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/calls_identifier_android.iml" filepath="$PROJECT_DIR$/android/calls_identifier_android.iml" />
     </modules>
   </component>
 </project>

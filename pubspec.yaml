@@ -1,4 +1,4 @@
-name: phone_call_demo
+name: calls_identifier
 description: Get phone number of incoming call
 
 # The following line prevents the package from being accidentally published to
