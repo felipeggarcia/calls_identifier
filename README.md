@@ -1,7 +1,7 @@
-# Get phone number of incoming call 
+# Get phone number of incoming call and resgister it
  
  
- Android de gelen çağrıdaki telefon numarasını alın
 
 
-<img src='assets/1.gif' width="320" height="650">
+
+

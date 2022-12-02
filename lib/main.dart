@@ -65,9 +65,7 @@ class _HomePageState extends State<HomePage>
         CurvedAnimation(parent: controller, curve: Curves.linear);
     animation =
         ColorTween(begin: Colors.white, end: Colors.blue).animate(curve);
-    // Keep the animation going forever once it is started
     animation.addStatusListener((status) {
-      // Reverse the animation after it has been completed
       if (status == AnimationStatus.completed) {
         controller.reverse();
       } else if (status == AnimationStatus.dismissed) {
@@ -75,7 +73,6 @@ class _HomePageState extends State<HomePage>
       }
       setState(() {});
     });
-    // Remove this line if you want to start the animation later
     controller.forward();
   }
 
@@ -122,9 +119,7 @@ class _HomePageState extends State<HomePage>
                     color: animation.value,
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed("/nextPage");
-                      },
+                      onTap: () {},
                       child: Text(state == 1
                           ? "Çalıyor"
                           : state == 2
