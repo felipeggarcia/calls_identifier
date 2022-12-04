@@ -18,8 +18,7 @@ class _MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
   String phoneNumber = '';
   int? state;
-  late Animation<Color?> animation;
-  late AnimationController controller;
+
   List<CallModel> callHistory = [];
 
   @override
@@ -41,29 +40,6 @@ class _MainPageState extends State<MainPage>
         });
       }
     });
-
-    controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
-    final CurvedAnimation curve =
-        CurvedAnimation(parent: controller, curve: Curves.linear);
-    animation =
-        ColorTween(begin: Colors.white, end: Colors.blue).animate(curve);
-    animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        controller.reverse();
-      } else if (status == AnimationStatus.dismissed) {
-        controller.forward();
-      }
-      setState(() {});
-    });
-    controller.forward();
-  }
-
-  dispose() {
-    controller.dispose();
-    super.dispose();
   }
 
   Future<bool> getPermission() async {
